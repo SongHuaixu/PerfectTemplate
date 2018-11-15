@@ -20,6 +20,7 @@
 import PerfectHTTP
 import PerfectHTTPServer
 import PerfectMarkdown
+import Foundation
 
 // An example request handler.
 // This 'handler' function can be referenced directly in the configuration below.
@@ -27,6 +28,7 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
 	// Respond with a simple message.
 	response.setHeader(.contentType, value: "text/html")
 //    response.appendBody(string: "<html><title>Hello, world!</title><body>Hello, world!</body></html>")
+
     let body = """
     # 联系方式
 
@@ -114,7 +116,8 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
     """.markdownToHTML ?? ""
     let head = "<html><head><meta http-equiv='content-type' content='text/html;charset=utf-8'><title>我的简历</title></head><body>"
     let bodyEnd = "</body></html>"
-    response.appendBody(string: head + body + bodyEnd)
+    let aaa = (try? FileManager.default.contentsOfDirectory(atPath: "/var/www/htdocs")) ?? []
+    response.appendBody(string: head + body + aaa.description + bodyEnd)
 	// Ensure that response.completed() is called when your processing is done.
 	response.completed()
 }
