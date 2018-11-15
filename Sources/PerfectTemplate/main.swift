@@ -38,7 +38,7 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
 var routes = Routes()
 routes.add(method: .get, uri: "/", handler: handler)
 routes.add(method: .get, uri: "/**",
-		   handler: StaticFileHandler(documentRoot: "./webroot", allowResponseFilters: true).handleRequest)
+		   handler: StaticFileHandler(documentRoot: "/var/www/htdocs", allowResponseFilters: true).handleRequest)
 try HTTPServer.launch(name: "localhost",
 					  port: 8181,
 					  routes: routes,
