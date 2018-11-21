@@ -56,29 +56,23 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
     # 工作经历
     ### 中商惠民（北京）电子商务有限公司（2016.4 ～ 2018.11）
     ### 爱有方教育科技（北京）有限公司（2015.1 ～ 2016.4）
-    ## 实习经历
-    ### 北京分豆教育科技股份有限公司（2014.4 ～ 2015.1）
 
     ---
 
     # 项目难点
 
     ### 中商惠民 CRM
-    1. 优化了 Cobub Razor 中 iOS 平台的收集 bug 功能
-    2. 使用 Swift + Storyboard 对项目进行重构
-    3. 自定义 UICollectionViewLayout 实现 UICollectionViewd 的布局和字符串自适应宽高
-    4. 后台文件静默上传
-    5. APP 中处理了多照片储存、显示、内存优化的问题
+    1. 优化了 Cobub Razor 中 iOS 平台的收集 bug 功能，使 Crash 信息易懂并更容易排查问题
+    2. 使用 Swift + ( Storyboard or SnapKit ) 对项目进行重构， 使崩溃率近一步下降
+    3. 自定义 UICollectionViewLayout 实现 UICollectionView 的布局和字符串自适应宽高
+    4. APP 中处理了多照片储存、显示、内存优化的问题
 
     ### 早教魔方
     1. 简单的了解音频和视频的基础知识，并在开发中使用
-    2. 使用 WebView 实现 Web 与原生交互
-    3. UITableView + AutoLayout 高度自适应和滑动优化
-
-    ## 慧学院
-    1. UITableView 和 UICollectionView 的了解和使用
-    2. Block 与 Delegate 的了解与使用
-    3. 上架 App Store 的上架等简单工作
+    2. Block 与 Delegate 的深入了解与使用
+    3. 使用 WebView 实现 Web 与原生交互
+    4. UITableView + AutoLayout 高度自适应和滑动优化
+    5. 上架 App Store 等一切流程
 
     ---
 
@@ -88,9 +82,9 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
     * 熟练使用 Masonry 、SnapKit 进行代码约束
     * 熟练使用 SVN 、 Git 进行版本管理
     * 熟练使用 CocoaPods 进行第三方库管理
+    * 熟悉数据结构基本算法
     * iOS LLDB Debug 调试
-    * 简单的使用 CoreData 、 SQLite 进行数据持久化
-    * 深入的了解与使用 iOS Runtime
+    * 深入理解Runtime运行机制和内存管理
     * 正在学习与了解 iOS 逆向和安全
 
     ---
@@ -103,6 +97,7 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
 
     # 自我评价
     自学能力强，做事踏实、认真负责、工作积极
+    具有良好的编程习惯，很强的分析能力以及独立解决问题的能力
     在工作中注意新知识的学习，并且注重团队精神及各方面的沟通合作，能承受工作上的压力
     思想成熟，做事有恒心和毅力，富有责任感，勇于创新
     为人诚恳，工作细心，吃苦耐劳，做事客观公正，责任心强
@@ -112,11 +107,10 @@ func handler(request: HTTPRequest, response: HTTPResponse) {
     # 致谢
 
     感谢您有时间阅读我的简历，期待能有机会和您共事
-
     """.markdownToHTML ?? ""
     let head = "<html><head><meta http-equiv='content-type' content='text/html;charset=utf-8'><title>我的简历</title></head><body>"
     let bodyEnd = "</body></html>"
-    let aaa = (try? FileManager.default.contentsOfDirectory(atPath: "/var/www/htdocs")) ?? []
+    let aaa = (try? FileManager.default.contentsOfDirectory(atPath: "/")) ?? []
     response.appendBody(string: head + body + aaa.description + bodyEnd)
 	// Ensure that response.completed() is called when your processing is done.
 	response.completed()
